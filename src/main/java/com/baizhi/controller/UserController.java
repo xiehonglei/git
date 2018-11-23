@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -15,12 +16,9 @@ public class UserController {
     @Autowired
     UserService userService;
     @RequestMapping("/queryAll")
-    public String queryall(){
+    public String queryall(Map map){
         List<User> list=userService.queryAll();
-        for (int i = 0; i < list.size(); i++) {
-            User user =  list.get(i);
-            System.out.println(user);
-        }
+        map.put("list",list);
         return "index";
     }
 }
