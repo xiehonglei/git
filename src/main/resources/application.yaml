@@ -1,5 +1,5 @@
 server:
-  context-path: /auction
+  context-path: /test
   port: 8989
   jsp-servlet:
     init-parameters:
@@ -7,10 +7,10 @@ server:
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:oracle:thin:@localhost:1521:XE
-    driver-class-name: oracle.jdbc.OracleDriver
-    username: hr
-    password: hr
+    url: jdbc:mysql://localhost:3306/test
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
   mvc:
     view:
       prefix: /
@@ -24,4 +24,4 @@ spring:
       force: true
 mybatis:
   type-aliases-package: com.baizhi.entity
-  mapper-locations: com/baizhi/dao/*Mapper.xml
+  mapper-locations: com/baizhi/dao/*Dao.xml
