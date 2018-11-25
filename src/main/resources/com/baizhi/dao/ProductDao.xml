@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.ProductDao">
+    <select id="queryAll" resultType="Product">
+        select a.*,c.category_name categoryname
+        from
+(select * from dd_product where book_state='onsale'	)a
+ LEFT JOIN dd_category c on a.cid=c.category_id
+        where book_id LIMIT #{start},#{pagesize}
+    </select>
+    <select id="getCount" resultType="int">
+        select count(*) from dd_product
+    </select>
+    <update id="deleteMany">
+        update dd_product set book_state='xiajia' where book_id in
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </update>
+    <insert id="add">
+       INSERT INTO dd_product VALUES (0,#{cid},#{book_name},#{book_price},sysdate(),'onsale',1000,#{author},
+  #{press},1,sysdate(),4, 12345678,50000,300,
+'16开','胶版纸','精装',#{salenum},#{custome_score},'recommend:这真是一本好书啊',#{messages},
+'author_msg:作者是好人','我的目录很详细','这真是一本好书啊','好，非常畅销!难得的一本好书','我的丛书',#{dangprice},#{product_image})
+    </insert>
+
+    <update id="update">
+        update dd_product set book_name=#{book_name},book_price=#{book_price},dangprice=#{dangprice},inventory=#{inventory},author=#{author},press=#{press},salenum=#{salenum},custome_score=#{custome_score},recommend=#{recommend},messages=#{messages} where book_id=#{book_id}
+    </update>
+</mapper>
