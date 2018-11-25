@@ -1,9 +1,15 @@
 package com.baizhi.entity;
 
+import java.util.Date;
+
 public class User {
     private int id;
-    private String username;
+    private String email;
+    private String nickname;
     private String password;
+    private Date create_date;
+    private String state;
+    private String authority;
 
     public User() {
         super();
@@ -13,15 +19,23 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", nickname='" + nickname + '\'' +
                 ", password='" + password + '\'' +
+                ", create_date=" + create_date +
+                ", state='" + state + '\'' +
+                ", authority='" + authority + '\'' +
                 '}';
     }
 
-    public User(int id, String username, String password) {
+    public User(int id, String email, String nickname, String password, Date create_date, String state, String authority) {
         this.id = id;
-        this.username = username;
+        this.email = email;
+        this.nickname = nickname;
         this.password = password;
+        this.create_date = create_date;
+        this.state = state;
+        this.authority = authority;
     }
 
     public int getId() {
@@ -32,12 +46,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getPassword() {
@@ -46,5 +68,29 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Date getCreate_date() {
+        return create_date;
+    }
+
+    public void setCreate_date(Date create_date) {
+        this.create_date = create_date;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
     }
 }

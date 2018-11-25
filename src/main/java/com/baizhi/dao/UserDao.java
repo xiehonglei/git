@@ -1,9 +1,8 @@
 package com.baizhi.dao;
 
 import com.baizhi.entity.User;
-
-import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserDao {
-    public List<User> queryAll();
+    public User queryOne(@Param("email") String email, @Param("password") String password);
 }
